@@ -1,0 +1,375 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="today.meyer.myharemote.myHAremote">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:srcCompat="@drawable/ic_tv_grey_24px"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="7dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintHorizontal_bias="0.08" />
+
+    <ToggleButton
+        android:id="@+id/powerBtn_id"
+        android:contentDescription="@string/powerBtnDesc"
+        style="@android:style/Widget.Button.Toggle"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:background="@drawable/power_check"
+        android:textOn=""
+        android:textOff=""
+        android:tag="myHA/macro/tv_on;myHA/macro/tv_off"
+        android:onClick="sendMessage"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="16dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintHorizontal_bias="0.5" />
+
+    <ImageButton
+        android:id="@+id/homeBtn_id"
+        android:contentDescription="@string/homeBtnDesc"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="12dp"
+        android:src="@drawable/ic_home_grey_24px"
+        android:background="@drawable/round_btn"
+        android:onClick="sendMessage"
+        android:tag="myHA/tv/home"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/powerBtn_id"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="4dp" />
+
+    <ImageButton
+        android:id="@+id/muteBtn_id"
+        android:contentDescription="@string/muteBtnDesc"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="12dp"
+        android:src="@drawable/ic_volume_off_grey_24px"
+        android:background="@drawable/round_btn"
+        android:onClick="sendMessage"
+        android:tag="myHA/tv/vol_mute"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/homeBtn_id"
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="4dp" />
+
+    <ImageButton
+        android:id="@+id/subTitle_id"
+        android:contentDescription="@string/subTitleBtnDesc"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="12dp"
+        android:src="@drawable/ic_subtitles_grey_24px"
+        android:background="@drawable/round_btn"
+        android:onClick="sendMessage"
+        android:tag="myHA/virgin/sub_title"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/muteBtn_id"
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="4dp" />
+
+    <LinearLayout
+        android:layout_width="100dp"
+        android:orientation="vertical"
+        android:background="@drawable/round_rect"
+        android:gravity="center"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/powerBtn_id"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginEnd="32dp"
+        android:id="@+id/linearLayout">
+
+        <ImageButton
+            android:id="@+id/ch_plus"
+            android:contentDescription="@string/chanPlusBtnDesc"
+            android:layout_width="64dp"
+            android:background="@android:color/transparent"
+            android:textColor="@color/myHA_BtnText"
+            android:layout_height="80dp"
+            android:tag="myHA/virgin/ch_plus"
+            android:onClick="sendMessage"
+            android:src="@drawable/ic_add_circle_outline_grey_24px" />
+
+        <TextView
+            android:id="@+id/ChannelLbl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/myHA_BtnText"
+            android:text="@string/channelLbl"
+            android:gravity="center"
+            android:visibility="visible" />
+
+        <ImageButton
+            android:id="@+id/ch_minus"
+            android:contentDescription="@string/chanMinusBtnDesc"
+            android:layout_width="64dp"
+            android:layout_height="80dp"
+            android:tag="myHA/virgin/ch_minus"
+            android:onClick="sendMessage"
+            android:textColor="@color/myHA_BtnText"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_remove_circle_outline_grey_24px" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/vol_layout"
+        android:layout_width="100dp"
+        android:background="@drawable/round_rect"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/powerBtn_id"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginStart="32dp">
+
+        <ImageButton
+            android:id="@+id/vol_plus"
+            android:contentDescription="@string/volPlusBtnDesc"
+            android:layout_width="64dp"
+            android:layout_height="80dp"
+            android:textColor="@color/myHA_BtnText"
+            android:background="@android:color/transparent"
+            android:tag="myHA/tv/vol_plus"
+            android:onClick="sendMessage"
+            android:src="@drawable/ic_add_circle_outline_grey_24px" />
+
+        <TextView
+            android:id="@+id/VolumeLbl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/volumeLbl"
+            android:textColor="@color/myHA_BtnText"
+            android:visibility="visible" />
+
+        <ImageButton
+            android:id="@+id/vol_minus"
+            android:contentDescription="@string/volMinusBtnDesc"
+            android:layout_width="64dp"
+            android:layout_height="80dp"
+            android:background="@android:color/transparent"
+            android:tag="myHA/tv/vol_minus"
+            android:textColor="@color/myHA_BtnText"
+            android:onClick="sendMessage"
+            android:src="@drawable/ic_remove_circle_outline_grey_24px" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/btn_1_5"
+        android:layout_width="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/vol_layout"
+        android:layout_marginTop="24dp"
+        android:layout_gravity="center_horizontal"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
+
+
+        <Button
+            android:id="@+id/btn_1"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/round_btn"
+            android:textColor="@color/myHA_BtnText"
+            android:tag="myHA/virgin/key_1"
+            android:layout_margin="8dp"
+            android:onClick="sendMessage"
+            android:text="1" />
+
+        <Button
+            android:id="@+id/btn_2"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/round_btn"
+            android:textColor="@color/myHA_BtnText"
+            android:tag="myHA/virgin/key_2"
+            android:layout_margin="8dp"
+            android:onClick="sendMessage"
+            android:text="2" />
+
+        <Button
+            android:id="@+id/btn_3"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/round_btn"
+            android:textColor="@color/myHA_BtnText"
+            android:tag="myHA/virgin/key_3"
+            android:layout_margin="8dp"
+            android:onClick="sendMessage"
+            android:text="3" />
+
+        <Button
+            android:id="@+id/btn_4"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/round_btn"
+            android:textColor="@color/myHA_BtnText"
+            android:tag="myHA/virgin/key_4"
+            android:layout_margin="8dp"
+            android:onClick="sendMessage"
+            android:text="4" />
+
+        <Button
+            android:id="@+id/btn_5"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/round_btn"
+            android:textColor="@color/myHA_BtnText"
+            android:tag="myHA/virgin/key_5"
+            android:layout_margin="8dp"
+            android:onClick="sendMessage"
+            android:text="5" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/btn_6_0"
+        android:layout_width="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/btn_1_5"
+        android:layout_gravity="center_horizontal"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
+
+
+        <Button
+            android:id="@+id/btn_6"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/round_btn"
+            android:textColor="@color/myHA_BtnText"
+            android:tag="myHA/virgin/key_6"
+            android:layout_margin="8dp"
+            android:onClick="sendMessage"
+            android:text="6" />
+
+        <Button
+            android:id="@+id/btn_7"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/round_btn"
+            android:textColor="@color/myHA_BtnText"
+            android:tag="myHA/virgin/key_7"
+            android:layout_margin="8dp"
+            android:onClick="sendMessage"
+            android:text="7" />
+
+        <Button
+            android:id="@+id/btn_8"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/round_btn"
+            android:textColor="@color/myHA_BtnText"
+            android:tag="myHA/virgin/key_8"
+            android:layout_margin="8dp"
+            android:onClick="sendMessage"
+            android:text="8" />
+
+        <Button
+            android:id="@+id/btn_9"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/round_btn"
+            android:textColor="@color/myHA_BtnText"
+            android:tag="myHA/virgin/key_9"
+            android:layout_margin="8dp"
+            android:onClick="sendMessage"
+            android:text="9" />
+
+        <Button
+            android:id="@+id/btn_0"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/round_btn"
+            android:textColor="@color/myHA_BtnText"
+            android:tag="myHA/virgin/key_0"
+            android:layout_margin="8dp"
+            android:onClick="sendMessage"
+            android:text="0" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/macros_layaout"
+        android:layout_width="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/btn_6_0"
+        android:layout_gravity="center_horizontal"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="12dp"
+        app:layout_constraintHorizontal_bias="0.5">
+
+
+        <Button
+            android:id="@+id/macro_1"
+            android:layout_width="70dp"
+            android:layout_height="50dp"
+            android:tag="myHA/macro/bbc1"
+            android:layout_margin="8dp"
+            android:background="@drawable/round_btn"
+            android:onClick="sendMessage"
+            android:text="BBC1" />
+
+        <Button
+            android:id="@+id/macro_2"
+            android:layout_width="70dp"
+            android:layout_height="50dp"
+            android:tag="myHA/macro/bbc2"
+            android:layout_margin="8dp"
+            android:background="@drawable/round_btn"
+            android:onClick="sendMessage"
+            android:text="BBC2" />
+
+        <Button
+            android:id="@+id/macro_3"
+            android:layout_width="70dp"
+            android:layout_height="50dp"
+            android:tag="myHA/macro/itv"
+            android:layout_margin="8dp"
+            android:background="@drawable/round_btn"
+            android:onClick="sendMessage"
+            android:text="ITV" />
+
+        <Button
+            android:id="@+id/macro_4"
+            android:layout_width="70dp"
+            android:layout_height="50dp"
+            android:tag="myHA/macro/CNN"
+            android:layout_margin="8dp"
+            android:background="@drawable/round_btn"
+            android:onClick="sendMessage"
+            android:text="CNN" />
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

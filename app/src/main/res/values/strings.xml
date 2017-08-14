@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">myHAremote</string>
+    <string name="action_settings">Settings</string>
+    <string name="server">Server</string>
+    <string name="port">Port</string>
+    <string name="connect">Connect</string>
+
+    <string name="homeBtnDesc">Return the homepage</string>
+    <string name="muteBtnDesc">Mute or unmute sound</string>
+    <string name="powerBtnDesc">Switch on or off</string>
+    <string name="chanPlusBtnDesc">Switch to next channel</string>
+    <string name="chanMinusBtnDesc">Switch to previous channel</string>
+    <string name="volPlusBtnDesc">Increase volume</string>
+    <string name="volMinusBtnDesc">Decrease volume</string>
+    <string name="subTitleBtnDesc">Subtitles</string>
+    <string name="channelLbl">Channel</string>
+    <string name="volumeLbl">Volume</string>
+    <string name="titleActivity">myRemote</string>
+
+</resources>

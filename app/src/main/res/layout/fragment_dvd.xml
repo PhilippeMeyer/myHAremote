@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="today.meyer.myharemote.myHAremote">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="63dp"
+        android:layout_height="39dp"
+        app:srcCompat="@drawable/ic_dvd_video_logo"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="7dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintHorizontal_bias="0.08" />
+
+    <ToggleButton
+        android:id="@+id/powerBtn_id"
+        android:contentDescription="@string/powerBtnDesc"
+        style="@android:style/Widget.Button.Toggle"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:background="@drawable/power_check"
+        android:textOn=""
+        android:textOff=""
+        android:tag="myHA/tv/power_on;myHA/tv/power_off"
+        android:onClick="sendMessage"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="16dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintHorizontal_bias="0.5" />
+
+    <LinearLayout
+        android:id="@+id/dvd_cmd_1"
+        android:layout_width="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="21dp"
+        app:layout_constraintTop_toBottomOf="@+id/powerBtn_id"
+        app:layout_constraintLeft_toRightOf="@+id/vol_layout"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp">
+
+        <ImageButton
+            android:id="@+id/playBtn"
+            android:src="@drawable/ic_play_circle_outline_grey_24px"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:background="@drawable/round_btn"
+            android:tag="myHA/dvd/play"
+            android:layout_margin="8dp"
+            android:onClick="sendMessage"/>
+
+        <ImageButton
+            android:id="@+id/stopBtn"
+            android:src="@drawable/ic_stop_grey_24px"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/round_btn"
+            android:tag="myHA/dvd/stop"
+            android:layout_margin="8dp"
+            android:onClick="sendMessage" />
+
+        <ImageButton
+            android:id="@+id/pauseBtn"
+            android:src="@drawable/ic_pause_circle_outline_grey_24px"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/round_btn"
+            android:tag="myHA/dvd/pause"
+            android:layout_margin="8dp"
+            android:onClick="sendMessage" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/dvd_cmd_2"
+        android:layout_width="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        app:layout_constraintLeft_toLeftOf="@+id/vol_layout"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintHorizontal_bias="0.991"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/dvd_cmd_1">
+
+        <ImageButton
+            android:id="@+id/skipPrevBtn"
+            android:src="@drawable/ic_skip_previous_grey_24px"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/round_btn"
+            android:tag="myHA/dvd/skipPrev"
+            android:layout_margin="4dp"
+            android:onClick="sendMessage"/>
+
+        <ImageButton
+            android:id="@+id/skipNextBtn"
+            android:src="@drawable/ic_skip_next_grey_24px"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/round_btn"
+            android:tag="myHA/dvd/skipNext"
+            android:layout_margin="4dp"
+            android:onClick="sendMessage" />
+
+        <ImageButton
+            android:id="@+id/FRBtn"
+            android:src="@drawable/ic_fast_rewind_grey_24px"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/round_btn"
+            android:tag="myHA/dvd/fr"
+            android:layout_margin="4dp"
+            android:onClick="sendMessage" />
+
+        <ImageButton
+            android:id="@+id/FFBtn"
+            android:src="@drawable/ic_fast_forward_grey_24px"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/round_btn"
+            android:tag="myHA/dvd/ff"
+            android:layout_margin="4dp"
+            android:onClick="sendMessage" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/btn_1_5"
+        android:layout_width="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="51dp"
+        app:layout_constraintTop_toBottomOf="@+id/vol_layout">
+
+
+        <Button
+            android:id="@+id/btn_1"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/round_btn"
+            android:textColor="@color/myHA_BtnText"
+            android:tag="myHAdvd/key_1"
+            android:layout_margin="8dp"
+            android:onClick="sendMessage"
+            android:text="1" />
+
+        <Button
+            android:id="@+id/btn_2"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/round_btn"
+            android:textColor="@color/myHA_BtnText"
+            android:tag="myHAdvd/key_2"
+            android:layout_margin="8dp"
+            android:onClick="sendMessage"
+            android:text="2" />
+
+        <Button
+            android:id="@+id/btn_3"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/round_btn"
+            android:textColor="@color/myHA_BtnText"
+            android:tag="myHAdvd/key_3"
+            android:layout_margin="8dp"
+            android:onClick="sendMessage"
+            android:text="3" />
+
+        <Button
+            android:id="@+id/btn_4"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/round_btn"
+            android:textColor="@color/myHA_BtnText"
+            android:tag="myHAdvd/key_4"
+            android:layout_margin="8dp"
+            android:onClick="sendMessage"
+            android:text="4" />
+
+        <Button
+            android:id="@+id/btn_5"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/round_btn"
+            android:textColor="@color/myHA_BtnText"
+            android:tag="myHAdvd/key_5"
+            android:layout_margin="8dp"
+            android:onClick="sendMessage"
+            android:text="5" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/btn_6_0"
+        android:layout_width="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/btn_1_5"
+        android:layout_gravity="center_horizontal"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
+
+
+        <Button
+            android:id="@+id/btn_6"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/round_btn"
+            android:textColor="@color/myHA_BtnText"
+            android:tag="myHAdvd/key_6"
+            android:layout_margin="8dp"
+            android:onClick="sendMessage"
+            android:text="6" />
+
+        <Button
+            android:id="@+id/btn_7"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/round_btn"
+            android:textColor="@color/myHA_BtnText"
+            android:tag="myHAdvd/key_7"
+            android:layout_margin="8dp"
+            android:onClick="sendMessage"
+            android:text="7" />
+
+        <Button
+            android:id="@+id/btn_8"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/round_btn"
+            android:textColor="@color/myHA_BtnText"
+            android:tag="myHAdvd/key_8"
+            android:layout_margin="8dp"
+            android:onClick="sendMessage"
+            android:text="8" />
+
+        <Button
+            android:id="@+id/btn_9"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/round_btn"
+            android:textColor="@color/myHA_BtnText"
+            android:tag="myHA//dvd/key_9"
+            android:layout_margin="8dp"
+            android:onClick="sendMessage"
+            android:text="9" />
+
+        <Button
+            android:id="@+id/btn_0"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/round_btn"
+            android:textColor="@color/myHA_BtnText"
+            android:tag="myHA/dvd/key_0"
+            android:layout_margin="8dp"
+            android:onClick="sendMessage"
+            android:text="0" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/vol_layout"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/round_rect"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/powerBtn_id">
+
+        <ImageButton
+            android:id="@+id/vol_plus"
+            android:layout_width="64dp"
+            android:layout_height="80dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/volPlusBtnDesc"
+            android:onClick="sendMessage"
+            android:src="@drawable/ic_add_circle_outline_grey_24px"
+            android:tag="myHA/tv/vol_plus"/>
+
+        <TextView
+            android:id="@+id/VolumeLbl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/volumeLbl"
+            android:textColor="@color/myHA_BtnText"
+            android:visibility="visible" />
+
+        <ImageButton
+            android:id="@+id/vol_minus"
+            android:layout_width="64dp"
+            android:layout_height="80dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/volMinusBtnDesc"
+            android:onClick="sendMessage"
+            android:src="@drawable/ic_remove_circle_outline_grey_24px"
+            android:tag="myHA/tv/vol_minus"
+            android:textColor="@color/myHA_BtnText" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/dvd_cmd_3"
+        android:layout_width="wrap_content"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/dvd_cmd_2"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintLeft_toLeftOf="@+id/dvd_cmd_2">
+
+        <ImageButton
+            android:id="@+id/muteBtn_id"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/round_btn"
+            android:contentDescription="@string/muteBtnDesc"
+            android:onClick="sendMessage"
+            android:src="@drawable/ic_volume_off_grey_24px"
+            android:layout_margin="4dp"
+            android:tag="myHA/tv/vol_mute"/>
+
+        <ImageButton
+            android:id="@+id/subTitle_id"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/round_btn"
+            android:contentDescription="@string/subTitleBtnDesc"
+            android:onClick="sendMessage"
+            android:layout_margin="4dp"
+            android:src="@drawable/ic_subtitles_grey_24px"
+            android:tag="myHA/dvd/sub_title"/>
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>
